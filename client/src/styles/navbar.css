@@ -1,0 +1,105 @@
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: var(--light-blue);
+  z-index: 2;
+  box-shadow: 0 0 20px 0 rgba(144, 174, 205, 0.339);
+  transition: all 0.2s linear;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
+}
+
+.nav-logo a,
+.nav-links a {
+  color: var(--bold-text-color);
+  text-decoration: none; /* Removes underline from links */
+  transition: color 0.3s ease; /* Smooth color transition for hover effects */
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--highlight-color); /* Add your highlight color for hover/focus */
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links .btn {
+  color: var(--white);
+  background-color: var(--button-color); /* Define a background color variable for buttons */
+  border-radius: 5px; /* Rounded corners for buttons */
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  transition: background-color 0.3s ease; /* Smooth background color transition for hover effects */
+}
+
+.nav-links .btn:hover,
+.nav-links .btn:focus {
+  background-color: var(--button-hover-color); /* Lighter or different color on hover/focus */
+}
+
+.menu-icons {
+  display: none;
+  z-index: 100;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.menu-open,
+.menu-close {
+  position: absolute;
+  color: var(--black);
+  cursor: pointer;
+}
+
+@media (max-width: 1300px) {
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--light-blue);
+    flex-direction: column;
+    transform: translateX(100%);
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    z-index: 20;
+    gap: 3rem;
+    transition: transform 0.3s linear, visibility 0.3s linear;
+  }
+  
+  .nav-active .nav-links {
+    transform: translateX(0);
+    visibility: visible;
+  }
+  
+  .menu-icons {
+    display: block;
+    position: fixed; /* Changed to fixed to ensure it stays in place when scrolling */
+    top: 1rem; /* Adjusted for better visual alignment */
+    right: 1rem;
+  }
+}
